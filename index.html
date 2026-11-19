@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dia da Consciência Negra - Jêje, Nagô, Hauçá e Malês</title>
+    
+    <!-- Fontes Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-dark: #120D0A;
+            --bg-card: #1E1611;
+            --bg-section: #17110D;
+            --gold: #E5A93B;
+            --gold-hover: #F5C056;
+            --terracotta: #C84B31;
+            --ochre: #D97724;
+            --text-light: #F7F3EE;
+            --text-muted: #C4B8AE;
+            --border-subtle: rgba(229, 169, 59, 0.25);
+            --font-display: 'Cinzel', serif;
+            --font-body: 'Plus Jakarta Sans', sans-serif;
+            --transition: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            font-family: var(--font-body);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        .african-pattern-bar {
+            height: 10px;
+            width: 100%;
+            background: repeating-linear-gradient(
+                90deg,
+                var(--gold) 0px, var(--gold) 25px,
+                var(--terracotta) 25px, var(--terracotta) 50px,
+                var(--bg-dark) 50px, var(--bg-dark) 60px,
+                var(--ochre) 60px, var(--ochre) 85px
+            );
+        }
+
+        header {
+            background-color: rgba(18, 13, 10, 0.95);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .logo {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--gold);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+        }
+
+        .logo span {
+            background-color: var(--terracotta);
+            color: var(--text-light);
+            font-family: var(--font-body);
+            font-size: 0.75rem;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            letter-spacing: 1px;
+        }
+
+        .nav-links { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+
+        .nav-btn {
+            background: transparent;
+            border: 1px solid transparent;
+            color: var(--text-muted);
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            font-weight: 600;
+            padding: 0.45rem 0.85rem;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .nav-btn:hover, .nav-btn.active {
+            color: var(--gold);
+            background: rgba(229, 169, 59, 0.1);
+            border-color: var(--border-subtle);
+        }
+
+        .page-view { display: none; animation: fadeInPage 0.5s ease forwards; }
+        .page-view.active { display: block; }
+
+        @keyframes fadeInPage {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+
+        .hero {
+            padding: 4rem 0;
+            border-bottom: 1px solid var(--border-subtle);
+            background: radial-gradient(circle at top right, rgba(200, 75, 49, 0.15), transparent 50%),
+                        radial-gradient(circle at bottom left, rgba(229, 169, 59, 0.1), transparent 50%);
+        }
+
+        .hero-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 3rem; align-items: center; }
+
+        .date-badge {
+            display: inline-block;
+            background-color: var(--terracotta);
+            color: var(--text-light);
+            font-weight: 700;
+            font-size: 0.9rem;
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            box-shadow: 0 4px 15px rgba(200, 75, 49, 0.3);
+        }
+
+        .hero h1 {
+            font-family: var(--font-display);
+            font-size: clamp(2.4rem, 5vw, 3.8rem);
+            line-height: 1.15;
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-text p { color: var(--text-muted); font-size: 1.05rem; margin-bottom: 1.2rem; text-align: justify; }
+
+        .hero-image-box {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 2px solid var(--gold);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+        }
+
+        .hero-image-box img { width: 100%; height: 440px; object-fit: cover; display: block; transition: transform 0.6s ease; }
+        .hero-image-box:hover img { transform: scale(1.03); }
+
+        .image-caption {
+            background: linear-gradient(transparent, rgba(18, 13, 10, 0.95));
+            position: absolute; bottom: 0; left: 0; right: 0;
+            padding: 2rem 1.2rem 1rem; font-size: 0.85rem; color: var(--gold); font-weight: 500;
+        }
+
+        .peoples-section { padding: 4.5rem 0; }
+
+        .section-header { text-align: center; max-width: 750px; margin: 0 auto 3.5rem; }
+        .section-header h2 { font-family: var(--font-display); font-size: 2.2rem; color: var(--gold); margin-bottom: 0.8rem; }
+        .section-header p { color: var(--text-muted); font-size: 1.05rem; }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+            gap: 2rem;
+        }
+
+        .people-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 14px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: var(--transition);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .people-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--gold);
+            box-shadow: 0 18px 35px rgba(229, 169, 59, 0.15);
+        }
+
+        .card-img-wrapper { height: 210px; overflow: hidden; position: relative; }
+        .card-img-wrapper img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+        .people-card:hover .card-img-wrapper img { transform: scale(1.08); }
+
+        .card-tag {
+            position: absolute; top: 12px; left: 12px;
+            background-color: rgba(18, 13, 10, 0.85);
+            color: var(--gold); font-size: 0.72rem; font-weight: 700;
+            padding: 0.3rem 0.75rem; border-radius: 4px; border: 1px solid var(--gold);
+        }
+
+        .card-content { padding: 1.6rem; display: flex; flex-direction: column; flex-grow: 1; }
+        .card-content h3 { font-family: var(--font-display); font-size: 1.45rem; color: var(--text-light); margin-bottom: 0.8rem; }
+        .card-content p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem; flex-grow: 1; }
+
+        .btn-saiba-mais {
+            background-color: var(--gold);
+            color: var(--bg-dark);
+            border: none;
+            padding: 0.85rem 1.4rem;
+            font-family: var(--font-body);
+            font-weight: 700;
+            font-size: 0.95rem;
+            border-radius: 8px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            transition: var(--transition);
+            width: 100%;
+        }
+
+        .btn-saiba-mais:hover { background-color: var(--gold-hover); transform: scale(1.02); }
+
+        .detail-hero {
+            position: relative;
+            padding: 4rem 0 3rem;
+            background-color: var(--bg-section);
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .btn-voltar {
+            background-color: transparent;
+            color: var(--gold);
+            border: 1px solid var(--gold);
+            padding: 0.6rem 1.2rem;
+            border-radius: 6px;
+            font-family: var(--font-body);
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            transition: var(--transition);
+        }
+
+        .btn-voltar:hover { background-color: var(--gold); color: var(--bg-dark); }
+
+        .detail-header-grid { display: grid; grid-template-columns: 1.3fr 0.7fr; gap: 2.5rem; align-items: center; }
+
+        .detail-subtitle {
+            color: var(--ochre);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .detail-title {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 4vw, 3.2rem);
+            color: var(--gold);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .detail-lead { font-size: 1.1rem; color: var(--text-light); opacity: 0.9; }
+
+        .detail-banner-img {
+            width: 100%; height: 280px; object-fit: cover;
+            border-radius: 12px; border: 2px solid var(--border-subtle);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.5);
+        }
+
+        .detail-body { padding: 3.5rem 0 5rem; }
+
+        .info-blocks-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 2rem;
+        }
+
+        .info-block {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-left: 4px solid var(--gold);
+            border-radius: 10px;
+            padding: 2rem;
+        }
+
+        .info-block.highlight-religion {
+            border: 2px solid var(--ochre);
+            border-left: 6px solid var(--ochre);
+            background: linear-gradient(145deg, #251A13, #1A120D);
+            grid-column: 1 / -1;
+            box-shadow: 0 10px 30px rgba(217, 119, 36, 0.12);
+        }
+
+        .info-block.alert-block { border-left-color: var(--terracotta); }
+        .info-block.full-block { grid-column: 1 / -1; }
+
+        .info-block h3 {
+            font-family: var(--font-display);
+            color: var(--gold);
+            font-size: 1.35rem;
+            margin-bottom: 1rem;
+        }
+
+        .info-block.highlight-religion h3 { color: var(--ochre); font-size: 1.55rem; }
+        .info-block.alert-block h3 { color: #E86A50; }
+        .info-block p { color: var(--text-muted); margin-bottom: 1rem; text-align: justify; }
+        .info-block ul { margin-left: 1.2rem; color: var(--text-muted); margin-bottom: 1rem; }
+        .info-block li { margin-bottom: 0.45rem; }
+
+        .table-container {
+            width: 100%; overflow-x: auto; margin-top: 1rem;
+            border-radius: 8px; border: 1px solid var(--border-subtle);
+        }
+
+        .custom-table { width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95rem; }
+        .custom-table th, .custom-table td { padding: 1rem; border-bottom: 1px solid var(--border-subtle); }
+        .custom-table th { background-color: rgba(229, 169, 59, 0.15); color: var(--gold); font-family: var(--font-display); }
+        .custom-table td { color: var(--text-muted); }
+        .custom-table tr:last-child td { border-bottom: none; }
+
+        .bottom-nav-box {
+            margin-top: 3.5rem; padding-top: 2rem;
+            border-top: 1px solid var(--border-subtle);
+            display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;
+        }
+
+        footer {
+            background-color: #0B0806;
+            border-top: 1px solid var(--border-subtle);
+            padding: 2.5rem 1.5rem;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        footer strong { color: var(--gold); }
+
+        @media (max-width: 900px) {
+            .hero-grid, .detail-header-grid { grid-template-columns: 1fr; }
+            .hero-image-box img { height: 320px; }
+            .info-blocks-grid { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 600px) {
+            .nav-container { flex-direction: column; align-items: flex-start; }
+            .cards-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="african-pattern-bar"></div>
+
+    <header>
+        <div class="nav-container">
+            <a class="logo" onclick="navigateTo('home')">
+                CONSCIÊNCIA NEGRA <span>20 NOV</span>
+            </a>
+            <nav class="nav-links" id="main-nav">
+                <button class="nav-btn active" data-target="home" onclick="navigateTo('home')">Início</button>
+                <button class="nav-btn" data-target="jeje" onclick="navigateTo('jeje')">O Povo Jêje</button>
+                <button class="nav-btn" data-target="nago" onclick="navigateTo('nago')">A Nação Nagô</button>
+                <button class="nav-btn" data-target="hauca" onclick="navigateTo('hauca')">O Povo Hauçá</button>
+                <button class="nav-btn" data-target="males" onclick="navigateTo('males')">Os Malês</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ================= PÁGINA INICIAL ================= -->
+    <main id="page-home" class="page-view active">
+        <section class="hero">
+            <div class="container hero-grid">
+                <div class="hero-text">
+                    <span class="date-badge">20 de Novembro • Memória, Resistência e Luta</span>
+                    <h1>Dia da Consciência Negra</h1>
+                    <p>
+                        O <strong>Dia Nacional de Zumbi e da Consciência Negra</strong>, celebrado em 20 de novembro, marca a luta histórica contra o racismo e a valorização das matrizes culturais, intelectuais e espirituais africanas que formaram o Brasil.
+                    </p>
+                    <p>
+                        Neste portal educativo, você conhecerá quatro expressões fundamentais da presença africana da África Ocidental no Brasil: o <strong>Povo Jêje</strong> (ligado ao Reino do Daomé e ao culto aos Voduns), a <strong>Nação Nagô</strong> (de origem Iorubá e culto aos Orixás), o <strong>Povo Hauçá</strong> (dos sete reinos comerciais e cidades muradas) e <strong>Os Malês</strong> (africanos muçulmanos letrados que protagonizaram a maior revolta urbana de escravizados do Brasil).
+                    </p>
+                </div>
+                <div class="hero-image-box">
+                    <img src="https://images.unsplash.com/photo-1523821741446-edb2b68bb7a0?auto=format&fit=crop&w=900&q=80" alt="Ancestralidade e resistência negra">
+                    <div class="image-caption">
+                        Ancestralidade, conhecimento e resistência: a herança viva dos povos africanos na formação do Brasil.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="peoples-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Povos e Matrizes Africanas</h2>
+                    <p>Clique nos cartões abaixo para explorar a história, a língua, a espiritualidade e o legado de cada grupo.</p>
+                </div>
+
+                <div class="cards-grid">
+                    <!-- Cartão 1: Povo Jêje -->
+                    <article class="people-card">
+                        <div class="card-img-wrapper">
+                            <span class="card-tag">Reino do Daomé • Voduns</span>
+                            <img src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?auto=format&fit=crop&w=800&q=80" alt="O Povo Jêje">
+                        </div>
+                        <div class="card-content">
+                            <h3>O Povo Jêje</h3>
+                            <p>
+                                Originários do Benin, Togo e Gana e ligados ao Reino do Daomé. Destacam-se pela profunda religiosidade centrada no culto aos Voduns, pelas línguas tonais do grupo Gbe e pela preservação cultural na Bahia e no Maranhão.
+                            </p>
+                            <button class="btn-saiba-mais" onclick="navigateTo('jeje')">
+                                Saiba mais &rarr;
+                            </button>
+                        </div>
+                    </article>
+
+                    <!-- Cartão 2: Nação Nagô -->
+                    <article class="people-card">
+                        <div class="card-img-wrapper">
+                            <span class="card-tag">Matriz Iorubá • Orixás</span>
+                            <img src="https://images.unsplash.com/photo-1509099836639-18ba1795216d?auto=format&fit=crop&w=800&q=80" alt="A Nação Nagô">
+                        </div>
+                        <div class="card-content">
+                            <h3>A Nação Nagô</h3>
+                            <p>
+                                Povos de origem Iorubá vindos da Costa dos Escravos (Nigéria, Benim e Togo). Consolidaram o Candomblé Nagô-Ketu, a liderança das Iyalorixás, o comércio urbano das ganhadeiras e a culinária com dendê.
+                            </p>
+                            <button class="btn-saiba-mais" onclick="navigateTo('nago')">
+                                Saiba mais &rarr;
+                            </button>
+                        </div>
+                    </article>
+
+                    <!-- Cartão 3: Povo Hauçá -->
+                    <article class="people-card">
+                        <div class="card-img-wrapper">
+                            <span class="card-tag">Hausa Bakwai • Comércio</span>
+                            <img src="https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?auto=format&fit=crop&w=800&q=80" alt="O Povo Hauçá">
+                        </div>
+                        <div class="card-content">
+                            <h3>O Povo Hauçá</h3>
+                            <p>
+                                Fundadores dos sete reinos originais (Hausa Bakwai) no norte da Nigéria e sul do Níger. Celebres pelas rotas comerciais transarianas, arquitetura de barro monumental, tecelagem e forte tradição islâmica.
+                            </p>
+                            <button class="btn-saiba-mais" onclick="navigateTo('hauca')">
+                                Saiba mais &rarr;
+                            </button>
+                        </div>
+                    </article>
+
+                    <!-- Cartão 4: Os Malês -->
+                    <article class="people-card">
+                        <div class="card-img-wrapper">
+                            <span class="card-tag">Islã e Resistência • 1835</span>
+                            <img src="https://images.unsplash.com/photo-1489392191049-fc10c97e64b6?auto=format&fit=crop&w=800&q=80" alt="Os Malês">
+                        </div>
+                        <div class="card-content">
+                            <h3>Os Malês</h3>
+                            <p>
+                                Africanos escravizados de religião muçulmana (majoritariamente hauçás e nagôs), altamente escolarizados em árabe, que lideraram a histórica Revolta dos Malês em Salvador em 1835.
+                            </p>
+                            <button class="btn-saiba-mais" onclick="navigateTo('males')">
+                                Saiba mais &rarr;
+                            </button>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ================= PÁGINA 1: O POVO JÊJE ================= -->
+    <section id="page-jeje" class="page-view">
+        <div class="detail-hero">
+            <div class="container">
+                <button class="btn-voltar" onclick="navigateTo('home')">&larr; Voltar à Página Inicial</button>
+                <div class="detail-header-grid">
+                    <div>
+                        <span class="detail-subtitle">África Ocidental • Antigo Reino do Daomé</span>
+                        <h2 class="detail-title">O Povo Jêje</h2>
+                        <p class="detail-lead">
+                            Formado por grupos como os Fon, Ewe e Gija, o povo jêje possui uma história marcada pela sofisticada organização do Reino do Daomé e pela profunda devoção espiritual aos Voduns.
+                        </p>
+                    </div>
+                    <img class="detail-banner-img" src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?auto=format&fit=crop&w=900&q=80" alt="Cultura Jêje">
+                </div>
+            </div>
+        </div>
+
+        <div class="container detail-body">
+            <div class="info-blocks-grid">
+                
+                <!-- DESTAQUE ESPECIAL: RELIGIÃO JÊJE -->
+                <div class="info-block highlight-religion">
+                    <h3>4. Religião e Espiritualidade: O Culto aos Voduns (Destaque)</h3>
+                    <p>
+                        A religião era o eixo central da vida e da identidade do povo jêje. Eles cultuavam divindades sagradas chamadas <strong>Voduns</strong>, que representam as forças primordiais da natureza (como o trovão, a terra, as águas, o vento e a fertilidade) e os diferentes aspectos da existência humana e ancestral.
+                    </p>
+                    <p>
+                        Para os povos jêje, a espiritualidade não estava separada da vida diária: ela fazia parte do cotidiano e manifestava-se intensamente nas celebrações comunitárias, nos ritmos sagrados dos tambores, nas danças ritualísticas e nas cerimônias de iniciação. Os tambores tinham papel fundamental como instrumentos de comunicação entre o mundo físico e o espiritual.
+                    </p>
+                    <p>
+                        No Brasil, mesmo diante da perseguição religiosa durante a escravidão, essas crenças foram preservadas e deram origem ao <strong>Candomblé Jêje</strong> (na Bahia) e ao <strong>Tambor de Mina</strong> (no Maranhão, com destaque histórico para a <em>Casa das Minas</em>), tradições religiosas vivas que mantêm cânticos, rituais e o culto aos Voduns até os dias de hoje.
+                    </p>
+                    <ul>
+                        <li>Culto às divindades chamadas <strong>Voduns</strong> e sua conexão direta com as forças da natureza.</li>
+                        <li>Centralidade dos tambores sagrados, danças e cerimônias comunitárias.</li>
+                        <li>Formação e influência direta no <strong>Candomblé Jêje</strong> e na preservação religiosa da <strong>Casa das Minas</strong> no Maranhão.</li>
+                    </ul>
+                </div>
+
+                <div class="info-block">
+                    <h3>1. Origem e Organização</h3>
+                    <p>
+                        O povo jêje é originário da África Ocidental, na região onde hoje estão localizados países como <strong>Benin, Togo e Gana</strong>. Sua história está diretamente ligada ao antigo <strong>Reino do Daomé</strong>, uma importante organização política, econômica e cultural africana.
+                    </p>
+                    <ul>
+                        <li>Formado por diferentes grupos étnicos, como os <strong>Fon, Ewe e Gija</strong>.</li>
+                        <li>Organização social baseada na comunidade, na família e no profundo respeito aos mais velhos.</li>
+                        <li>Cada grupo possuía costumes, crenças e tradições próprias.</li>
+                    </ul>
+                </div>
+
+                <div class="info-block">
+                    <h3>2. Línguas do Grupo Gbe</h3>
+                    <p>
+                        A língua dos povos jêje pertence principalmente ao grupo linguístico <strong>Gbe</strong>, tendo como principais idiomas o <strong>Fon, o Ewe e o Gija</strong>, que continuam sendo falados até hoje na África.
+                    </p>
+                    <ul>
+                        <li>São <strong>línguas tonais</strong>: a entonação da voz altera completamente o significado das palavras.</li>
+                        <li>A oralidade era essencial para transmitir histórias, ensinamentos e tradições de uma geração para outra.</li>
+                    </ul>
+                </div>
+
+                <div class="info-block alert-block">
+                    <h3>3. Escravização e Destinos</h3>
+                    <p>
+                        Durante a escravidão, principalmente entre os séculos XVII e XIX, muitos africanos jêje foram retirados à força de suas terras e trazidos para o Brasil, perdendo a liberdade e enfrentando condições severas de trabalho e separação familiar.
+                    </p>
+                    <ul>
+                        <li>Chegaram principalmente à <strong>Bahia, ao Maranhão, a Minas Gerais e ao Rio de Janeiro</strong>.</li>
+                        <li>Seus descendentes vivem hoje no Benin, Togo, Gana e em diversas regiões do Brasil, mantendo suas raízes vivas.</li>
+                    </ul>
+                </div>
+
+                <div class="info-block">
+                    <h3>5. Características Culturais</h3>
+                    <p>
+                        Além da religiosidade, o povo jêje destacou-se pela música percussiva, pela dança, pelo artesanato e pelas celebrações coletivas.
+                    </p>
+                    <ul>
+                        <li>Valorização da família, da vida comunitária e do respeito aos anciãos.</li>
+                        <li>Importância vital dos tambores para acompanhar cantos e cerimônias.</li>
+                        <li>Transmissão oral dos conhecimentos e memória dos antepassados.</li>
+                    </ul>
+                </div>
+
+                <div class="info-block full-block">
+                    <h3>6. Curiosidades e Legado Histórico</h3>
+                    <ul>
+                        <li><strong>Origem do termo:</strong> O nome "jêje" foi utilizado no Brasil para identificar diferentes povos africanos falantes das línguas Gbe vindos daquela região.</li>
+                        <li><strong>Poder político:</strong> O antigo Reino do Daomé foi um dos mais importantes centros políticos e militares da África Ocidental.</li>
+                        <li><strong>Patrimônio no Brasil:</strong> A <em>Casa das Minas</em>, em São Luís do Maranhão, é um dos mais importantes espaços históricos de preservação da tradição religiosa e cultural jêje no Brasil.</li>
+                        <li><strong>Identidade nacional:</strong> Mesmo após séculos de dor e escravidão, a cultura jêje resistiu e contribuiu profundamente para a formação da identidade brasileira.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="bottom-nav-box">
+                <button class="btn-voltar" onclick="navigateTo('home')">&larr; Voltar à Página Inicial</button>
+                <button class="btn-saiba-mais" style="width: auto;" onclick="navigateTo('nago')">Próximo: A Nação Nagô &rarr;</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= PÁGINA 2: A NAÇÃO NAGÔ ================= -->
+    <section id="page-nago" class="page-view">
+        <div class="detail-hero">
+            <div class="container">
+                <button class="btn-voltar" onclick="navigateTo('home')">&larr; Voltar à Página Inicial</button>
+                <div class="detail-header-grid">
+                    <div>
+                        <span class="detail-subtitle">Matriz Cultural e Étnica Iorubá</span>
+                        <h2 class="detail-title">A Nação Nagô</h2>
+                        <p class="detail-lead">
+                            Termo histórico e cultural utilizado no Brasil para designar os povos de origem Iorubá, representando uma das matrizes africanas mais influentes na formação do país.
+                        </p>
+                    </div>
+                    <img class="detail-banner-img" src="https://images.unsplash.com/photo-1509099836639-18ba1795216d?auto=format&fit=crop&w=900&q=80" alt="Nação Nagô">
+                </div>
+            </div>
+        </div>
+
+        <div class="container detail-body">
+            <div class="info-blocks-grid">
+                <div class="info-block">
+                    <h3>1. Origem</h3>
+                    <p>
+                        Os nagôs são originários da África Ocidental, em uma vasta região geopolítica conhecida historicamente pelos europeus como <strong>Costa dos Escravos</strong> ou <strong>Costa da Mina</strong>.
+                    </p>
+                    <ul>
+                        <li>Abrange territórios dos atuais países: <strong>Nigéria</strong> (especialmente o sudoeste), <strong>Benim</strong> e <strong>Togo</strong>.</li>
+                        <li>Na África, organizavam-se em reinos e cidades-estado sob o guarda-chuva cultural Iorubá, como <strong>Oió, Queto, Ifé, Ijebu e Egbá</strong>.</li>
+                    </ul>
+                </div>
+
+                <div class="info-block">
+                    <h3>2. Língua Iorubá</h3>
+                    <p>
+                        A língua falada pelos nagôs é o <strong>Iorubá (ou Yorùbá)</strong>, marcada por sua expressividade poética e filosófica.
+                    </p>
+                    <ul>
+                        <li>É uma <strong>língua tonal</strong> (a entonação da sílaba altera o significado da palavra) e rica em provérbios e metáforas.</li>
+                        <li>No Brasil, preservou-se nas práticas litúrgicas e religiosas, além de influenciar profundamente a prosódia (sotaque) e o vocabulário do português falado na Bahia.</li>
+                    </ul>
+                </div>
+
+                <div class="info-block full-block">
+                    <h3>3. Onde foram parar?</h3>
+                    <p>
+                        Durante o tráfico transatlântico de escravizados (especialmente entre os séculos XVIII e XIX), o maior contingente da nação Nagô desembarcou no Brasil:
+                    </p>
+                    <div class="table-container">
+                        <table class="custom-table">
+                            <thead>
+                                <tr>
+                                    <th>Destino Principal</th>
+                                    <th>Presença e Legado Cultural</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Bahia (Salvador e Recôncavo)</strong></td>
+                                    <td>Tornou-se o principal epicentro do povo nagô na América. Fundaram os primeiros terreiros de Candomblé de matriz Nagô-Ketu (como o Terreiro da Casa Branca, Gantois e Axé Opô Afonjá).</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Rio de Janeiro e Pernambuco</strong></td>
+                                    <td>Presentes em menor proporção comparados aos povos Bantos, mas influenciando fraternidades religiosas e expressões musicais.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Outras regiões das Américas</strong></td>
+                                    <td>Em menor grau, populações iorubás também foram levadas para Cuba (onde formaram a tradição Lucumí) e Trinidad e Tobago.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="info-block alert-block">
+                    <h3>Revolta dos Malês (1835)</h3>
+                    <p>
+                        Em Salvador, os nagôs tiveram papel central na maior revolta urbana de pessoas escravizadas da história do Brasil. Grande parte dos líderes e combatentes eram nagôs (muitos deles muçulmanos, conhecidos como malês).
+                    </p>
+                </div>
+
+                <div class="info-block">
+                    <h3>Organização Urbana (Ganhadeiras)</h3>
+                    <p>
+                        As mulheres nagôs (conhecidas como "pretas de ganho" ou quitandeiras) dominavam o comércio de rua na Salvador do século XIX. Vendiam quitutes e tecidos, acumulando economias para comprar a própria alforria e a de parentes.
+                    </p>
+                </div>
+
+                <div class="info-block">
+                    <h3>Matriarcado Religioso</h3>
+                    <p>
+                        A estrutura sociocultural nagô no Brasil deu um papel de centralidade à liderança feminina (<strong>Mães de Santo / Iyalorixás</strong>), essenciais para manter viva a tradição oral e a memória cultural do povo.
+                    </p>
+                </div>
+
+                <div class="info-block">
+                    <h3>Orixás e Gastronomia</h3>
+                    <p>
+                        A cosmologia dos <strong>Orixás</strong> (culto às forças da natureza como Ogum, Xangô, Iemanjá e Oxum) e pratos tradicionais como o <strong>acarajé, o abará</strong> e o uso do <strong>óleo de dendê</strong> são heranças diretas da cultura nagô/iorubá incorporadas à identidade brasileira.
+                    </p>
+                </div>
+            </div>
+
+            <div class="bottom-nav-box">
+                <button class="btn-voltar" onclick="navigateTo('jeje')">&larr; Anterior: O Povo Jêje</button>
+                <button class="btn-saiba-mais" style="width: auto;" onclick="navigateTo('hauca')">Próximo: O Povo Hauçá &rarr;</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= PÁGINA 3: O POVO HAUÇÁ ================= -->
+    <section id="page-hauca" class="page-view">
+        <div class="detail-hero">
+            <div class="container">
+                <button class="btn-voltar" onclick="navigateTo('home')">&larr; Voltar à Página Inicial</button>
+                <div class="detail-header-grid">
+                    <div>
+                        <span class="detail-subtitle">África Ocidental • Hausaland e Comércio Transariano</span>
+                        <h2 class="detail-title">O Povo Hauçá</h2>
+                        <p class="detail-lead">
+                            Conhecidos por suas grandes cidades muradas, pela habilidade nas rotas comerciais do Saara e pelos sete reinos originais (Hausa Bakwai), os hauçás formam um dos maiores grupos étnicos da África.
+                        </p>
+                    </div>
+                    <img class="detail-banner-img" src="https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?auto=format&fit=crop&w=900&q=80" alt="Povo Hauçá">
+                </div>
+            </div>
+        </div>
+
+        <div class="container detail-body">
+            <div class="info-blocks-grid">
+                
+                <!-- 1. Origem -->
+                <div class="info-block">
+                    <h3>1. Origem e o Mito de Bayajidda</h3>
+                    <p>
+                        As origens dos hauçás remontam a mitos tradicionais e à evolução de comunidades agrícolas e comerciais na África Ocidental. A lenda mais famosa sobre sua fundação é o <strong>Mito de Bayajidda</strong>, que narra a história de um herói de Bagdá que chegou a Daura (no atual norte da Nigéria), matou uma serpente sagrada que dominava o poço local e casou-se com a rainha.
+                    </p>
+                    <p>
+                        Desta união nasceram os fundadores dos <strong>Hausa Bakwai</strong> (os sete reinos hauçás originais: <strong>Daura, Kano, Rano, Katsina, Zazzau, Gobir e Biram</strong>).
+                    </p>
+                    <p>
+                        Historicamente, o povo hauçá formou-se através da fusão de povos locais de caçadores e agricultores com populações imigrantes e comerciantes que cruzavam o Saara. A partir do século XIV, com a influência de mercadores e estudiosos árabes, o <strong>islamismo</strong> começou a se enraizar na cultura hauçá, tornando-se central para sua identidade.
+                    </p>
+                </div>
+
+                <!-- 2. Língua -->
+                <div class="info-block">
+                    <h3>2. A Língua Hauçá</h3>
+                    <p>
+                        A língua hauçá pertence à família linguística <strong>chádica</strong> (do tronco afro-asiático) e é uma das línguas mais faladas de toda a África, com mais de 70 milhões de falantes nativos e dezenas de milhões como segunda língua (usada extensivamente como língua franca de comércio na África Ocidental).
+                    </p>
+                    <ul>
+                        <li><strong>Escrita:</strong> Tradicionalmente, era escrita usando o <strong>Ajami</strong> (um alfabeto baseado no árabe), introduzido com o islamismo. Hoje em dia, utiliza predominantemente o <strong>Boko</strong> (um alfabeto baseado no latim).</li>
+                        <li><strong>Língua Tonal:</strong> A altura da voz ao pronunciar uma palavra pode mudar completamente o seu significado.</li>
+                    </ul>
+                </div>
+
+                <!-- 3. Características -->
+                <div class="info-block">
+                    <h3>3. Características Sociais e Econômicas</h3>
+                    <ul>
+                        <li><strong>Economia e Comércio:</strong> Historicamente famosos por sua habilidade comercial, sendo grandes artesãos (especialmente na tecelagem, tinturaria de tecidos com anil e trabalhos em couro) e agricultores de milho, sorgo e milheto. As rotas de comércio transariano passavam diretamente pelas suas cidades-estado.</li>
+                        <li><strong>Organização Social:</strong> Estruturada em reinos governados por reis ou sultões chamados de <strong>Emires</strong> (conhecidos como <em>Sarkin</em>), onde o sistema político islâmico e as leis tradicionais se misturam na administração local.</li>
+                        <li><strong>Urbanização Antiga:</strong> Construíram grandes centros urbanos cercados por muralhas monumentais de barro (como as famosas muralhas históricas de Kano).</li>
+                    </ul>
+                </div>
+
+                <!-- 4. Onde foram parar -->
+                <div class="info-block alert-block">
+                    <h3>4. Distribuição Geográfica e Diáspora</h3>
+                    <p>
+                        A terra ancestral dos hauçás, conhecida como <strong>Hausaland (País Hauçá)</strong>, situa-se majoritariamente no <strong>norte da Nigéria e no sul do Níger</strong>. Devido a séculos de migrações comerciais e peregrinações religiosas, grandes comunidades (bairros <em>Zango</em> ou <em>Sabon Gari</em>) espalharam-se por:
+                    </p>
+                    <ul>
+                        <li>Gana, Camarões, Chade, Sudão e Costa do Marfim.</li>
+                        <li><strong>No Brasil:</strong> O tráfico transatlântico trouxe indivíduos de origem hauçá para as Américas, onde ficaram conhecidos, junto com outros muçulmanos da região, como <strong>malês</strong>.</li>
+                    </ul>
+                </div>
+
+                <!-- 5. Curiosidades -->
+                <div class="info-block full-block">
+                    <h3>5. Curiosidades Culturais</h3>
+                    <ul>
+                        <li><strong>Os Griots e Músicos:</strong> Rica tradição de poesia oral e música executada com instrumentos tradicionais de corda e percutidos (como o tambor-falante / <em>kalangu</em>), frequentemente elogiando líderes ou contando epopeias históricas.</li>
+                        <li><strong>Arquitetura Vernacular:</strong> Feita de tijolos de barro secos ao sol com decorações geométricas em relevo (estilo <em>Sudano-Saheliano</em>), mundialmente famosa pela sua beleza e eficácia térmica contra o calor do deserto.</li>
+                        <li><strong>O Cavalo e a Nobreza:</strong> O cavalo tem papel central na cultura de prestígio hauçá. Festivais como o <strong>Durbar</strong> (celebrado no final do Ramadã) reúnem centenas de cavaleiros trajados com armaduras e vestes coloridas ricamente bordadas para homenagear os emires locais.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="bottom-nav-box">
+                <button class="btn-voltar" onclick="navigateTo('nago')">&larr; Anterior: A Nação Nagô</button>
+                <button class="btn-saiba-mais" style="width: auto;" onclick="navigateTo('males')">Próximo: Os Malês &rarr;</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= PÁGINA 4: OS MALÊS ================= -->
+    <section id="page-males" class="page-view">
+        <div class="detail-hero">
+            <div class="container">
+                <button class="btn-voltar" onclick="navigateTo('home')">&larr; Voltar à Página Inicial</button>
+                <div class="detail-header-grid">
+                    <div>
+                        <span class="detail-subtitle">Brasil Século XIX • Letramento e Revolta</span>
+                        <h2 class="detail-title">Os Malês</h2>
+                        <p class="detail-lead">
+                            Termo histórico usado no Brasil do século XIX para designar os africanos escravizados de religião muçulmana vindos da África Ocidental. A palavra vem do iorubá <em>imale</em> ou do hauçá <em>málami</em> (professor ou letrado).
+                        </p>
+                    </div>
+                    <img class="detail-banner-img" src="https://images.unsplash.com/photo-1489392191049-fc10c97e64b6?auto=format&fit=crop&w=900&q=80" alt="Os Malês">
+                </div>
+            </div>
+        </div>
+
+        <div class="container detail-body">
+            <div class="info-blocks-grid">
+                
+                <!-- 1. Origem -->
+                <div class="info-block">
+                    <h3>1. Origem e Identidade Islâmica</h3>
+                    <ul>
+                        <li><strong>De onde vieram:</strong> Os malês não eram uma nação isolada, mas agrupavam etnias da África Ocidental, com destaque para os <strong>hauçás</strong> e os <strong>nagôs (iorubás)</strong>, além de grupos como os <strong>tapas (nupes)</strong> e <strong>bornus</strong>.</li>
+                        <li><strong>O islamismo:</strong> Essas populações já haviam tido forte contato com o islamismo em sua terra natal, o que moldou profundamente sua cultura, disciplina e organização social no Brasil.</li>
+                    </ul>
+                </div>
+
+                <!-- 2. Características -->
+                <div class="info-block">
+                    <h3>2. Características</h3>
+                    <ul>
+                        <li><strong>Alto nível de instrução:</strong> Diferente do estereótipo imposto pelos senhores da época, muitos malês eram altamente escolarizados. Sabiam ler e escrever em árabe e tinham facilidade com matemática e comércio.</li>
+                        <li><strong>Atuação urbana:</strong> Trabalhavam como "escravos de ganho" em Salvador (BA), exercendo funções como artesãos, sapateiros, ferreiros, pedreiros ou comerciantes de rua.</li>
+                        <li><strong>Postura altiva:</strong> Com forte coesão religiosa e cultural, mantinham-se apegados às suas raízes e eram vistos como altivos e irredutíveis diante da opressão escravista.</li>
+                    </ul>
+                </div>
+
+                <!-- 3. Língua e Comunicação -->
+                <div class="info-block">
+                    <h3>3. Língua e Comunicação</h3>
+                    <p>
+                        Como agrupavam diferentes etnias africanas, eles utilizavam suas línguas nativas (como o <strong>iorubá</strong> e o <strong>hauçá</strong>) no cotidiano e o <strong>árabe</strong> como língua sagrada e escrita para amuletos, textos religiosos (alcorânicos) e comunicação secreta entre os líderes do movimento.
+                    </p>
+                </div>
+
+                <!-- 4. Onde foram parar -->
+                <div class="info-block">
+                    <h3>4. Distribuição Geográfica no Brasil</h3>
+                    <p>
+                        Embora tenham tido forte presença em estados como <strong>Pernambuco, Alagoas e Rio de Janeiro</strong>, o principal reduto dos malês foi a <strong>Bahia (especialmente Salvador)</strong>, onde formaram uma comunidade muçulmana muito organizada e urbana no início do século XIX.
+                    </p>
+                </div>
+
+                <!-- 5. Curiosidades e Legado -->
+                <div class="info-block alert-block full-block">
+                    <h3>5. Curiosidades e o Legado Histórico</h3>
+                    <ul>
+                        <li><strong>A Revolta dos Malês (1835):</strong> Na madrugada de 25 de janeiro de 1835, em Salvador, lideraram a maior revolta urbana de escravizados da história do Brasil. Cerca de 600 rebeldes tomaram as ruas armados com o objetivo de conquistar a liberdade, derrubar o sistema escravista, impor o fim do catolicismo obrigatório e fundar um governo islâmico.</li>
+                        <li><strong>Tradições e Vestimentas:</strong> Durante suas celebrações e períodos sagrados (como o final do Ramadã), os líderes costumavam usar trajes tradicionais marcantes, como túnicas brancas amplas (<em>abadás</em>) e gorros vermelhos (<em>filás</em>).</li>
+                        <li><strong>Repressão e Sobrevivência Cultural:</strong> Após a dura repressão à revolta, muitos malês foram fuzilados, açoitados ou deportados para a África. No entanto, vestígios de sua linguagem religiosa, nomes de artefatos e termos em árabe e hauçá continuaram influenciando profundamente as religiões de matriz afro-brasileira e a cultura popular da Bahia.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="bottom-nav-box">
+                <button class="btn-voltar" onclick="navigateTo('hauca')">&larr; Anterior: O Povo Hauçá</button>
+                <button class="btn-saiba-mais" style="width: auto;" onclick="navigateTo('home')">Voltar à Página Inicial &rarr;</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rodapé -->
+    <footer>
+        <div class="container">
+            <p><strong>20 de Novembro — Dia Nacional de Zumbi e da Consciência Negra</strong></p>
+            <p style="margin-top: 0.4rem;">Projeto Educativo sobre os Povos Jêje, Nagô, Hauçá e os Malês na Formação do Brasil.</p>
+        </div>
+    </footer>
+
+    <!-- Script de Navegação -->
+    <script>
+        function navigateTo(pageId) {
+            const pages = document.querySelectorAll('.page-view');
+            pages.forEach(page => page.classList.remove('active'));
+
+            const targetPage = document.getElementById('page-' + pageId);
+            if (targetPage) targetPage.classList.add('active');
+
+            const navButtons = document.querySelectorAll('.nav-btn');
+            navButtons.forEach(btn => {
+                if (btn.getAttribute('data-target') === pageId) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            });
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
